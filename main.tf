@@ -188,8 +188,8 @@ resource "aws_route_table_association" "private_subnet_route_table_association_2
 }
 
 # Create an IAM role for the EKS cluster
-resource "aws_iam_role" "eks_cluster_role" {
-  name = "eks_cluster_role"
+resource "aws_iam_role" "eks_clusters_role" {
+  name = "eks_clusters_role"
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
     Statement = [
@@ -205,13 +205,13 @@ resource "aws_iam_role" "eks_cluster_role" {
 }
 
 # Attach the necessary policies to the IAM role
-resource "aws_iam_role_policy_attachment" "eks_cluster_role_attachment" {
+resource "aws_iam_role_policy_attachment" "eks_clusters_role_attachment" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
   role       = aws_iam_role.eks_cluster_role.name
 }
 
 # Create an EKS cluster
-resource "aws_eks_cluster" "karo_cluster" {
+resource "aws_eks_cluster" "sylviewn_cluster" {
   name     = "eks_cluster"
   role_arn = aws_iam_role.eks_cluster_role.arn
   version  = var.eks_version
