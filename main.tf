@@ -8,7 +8,7 @@ resource "aws_vpc" "eks_vpc" {
 
 # Create an internet gateway
 resource "aws_internet_gateway" "eks_igw" {
-  vpc_id = aws_vpc.eks_vpc.id
+  vpc_id = vpc-071d64e231b29153d
   tags = var.igw_tags
 }
 # Create 2 Public and 2 Private Subnets
